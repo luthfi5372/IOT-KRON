@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Telemetri Kapal & Kontrol Aktuator</title>
+    <meta name="description" content="Dashboard monitoring telemetri kualitas air (suhu DS18B20, pH-4502C, TDS) dan kontrol aktuator pompa dosing kapal berbasis ESP32-S3 dan protokol MQTT." />
+    <meta property="og:title" content="Dashboard Telemetri Kapal & Kontrol Aktuator" />
+    <meta property="og:description" content="Dashboard monitoring telemetri kualitas air (suhu DS18B20, pH-4502C, TDS) dan kontrol aktuator pompa dosing kapal berbasis ESP32-S3 dan protokol MQTT." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        try {
+          var _rawFetch = window.fetch ? window.fetch.bind(window) : null;
+          Object.defineProperty(window, 'fetch', {
+            get: function () {
+              return _rawFetch;
+            },
+            set: function (newVal) {
+              _rawFetch = newVal;
+            },
+            configurable: true,
+            enumerable: true,
+          });
+        } catch (e) {
+          // Ignore if cannot redefine
+        }
+
+        window.addEventListener(
+          'error',
+          function (e) {
+            if (
+              (e.filename && e.filename.indexOf('chrome-extension://') !== -1) ||
+              (e.message && e.message.indexOf('Cannot set property fetch') !== -1)
+            ) {
+              e.stopImmediatePropagation();
+              e.preventDefault();
+            }
+          },
+          true
+        );
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

@@ -1,0 +1,6 @@
+{
+  "name": "Dashboard Telemetri Kapal & Kontrol Aktuator",
+  "description": "Dashboard monitoring telemetri kualitas air (suhu DS18B20, pH-4502C, TDS) dan kontrol aktuator pompa dosing kapal berbasis ESP32-S3 dan protokol MQTT.",
+  "requestFramePermissions": ["notifications"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

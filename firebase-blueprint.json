@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Operator kapal profil pengguna terautentikasi",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["operator", "engineer", "captain"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "displayName", "role"]
+    },
+    "TelemetryLog": {
+      "title": "TelemetryLog",
+      "description": "Log data telemetri kapal yang tersimpan ke cloud Firestore",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "vesselId": { "type": "string" },
+        "timestamp": { "type": "number" },
+        "timeFormatted": { "type": "string" },
+        "suhu_c": { "type": "number" },
+        "ph": { "type": "number" },
+        "tds_ppm": { "type": "number" },
+        "baterai_persen": { "type": "number" },
+        "tegangan_v": { "type": "number" },
+        "pompa_up": { "type": "string", "enum": ["ON", "OFF"] },
+        "pompa_down": { "type": "string", "enum": ["ON", "OFF"] },
+        "status": { "type": "string" },
+        "note": { "type": "string" }
+      },
+      "required": ["userId", "vesselId", "timestamp", "suhu_c", "ph", "tds_ppm", "baterai_persen", "pompa_up", "pompa_down", "status"]
+    },
+    "VesselConfig": {
+      "title": "VesselConfig",
+      "description": "Pengaturan ambang batas alarm dan parameter kapal per operator",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "vesselName": { "type": "string" },
+        "phMin": { "type": "number" },
+        "phMax": { "type": "number" },
+        "tempMin": { "type": "number" },
+        "tempMax": { "type": "number" },
+        "lowBatteryThreshold": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["userId", "vesselName", "phMin", "phMax", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Data profil operator kapal"
+    },
+    "/telemetry_logs/{logId}": {
+      "schema": "TelemetryLog",
+      "description": "Koleksi log telemetri kualitas air dan aktuator kapal"
+    },
+    "/vessel_configs/{configId}": {
+      "schema": "VesselConfig",
+      "description": "Konfigurasi kapal dan ambang batas peringatan"
+    }
+  }
+}
